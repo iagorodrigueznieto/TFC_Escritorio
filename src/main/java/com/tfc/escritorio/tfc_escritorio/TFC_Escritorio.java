@@ -18,7 +18,7 @@ public class TFC_Escritorio {
     public static void main(String[] args) {
         try {
             Controller controller = new Controller();
-            controller.iniciarVentanaPrincipal();
+            controller.iniciarVentanaLogin();
         } catch (Exception e) {
 
         }

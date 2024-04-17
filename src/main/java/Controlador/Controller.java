@@ -18,6 +18,7 @@ import java.awt.TextArea;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -133,9 +134,32 @@ public class Controller {
     }
 
     public void registrarse(String login, String correo, String contraseña) {
-        Usuario usuario = new Usuario(login, correo, contraseña, 2);
-        Gson gson = new GsonBuilder().create();
-        String json = gson.toJson(usuario);
+        try {
+            Usuario usuario = new Usuario(login, correo, contraseña, 2);
+            Gson gson = new GsonBuilder().create();
+            String json = gson.toJson(usuario);
+            // URL del endpoint
+            URL url = new URL("http://localhost:8080/usuarios");
+
+            // Abrir conexión HTTP
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            // Configurar la solicitud HTTP
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setDoOutput(true);
+
+            System.out.println(json);
+            // Escribir el JSON en el cuerpo de la solicitud
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = json.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            System.out.println(connection.getResponseCode());
+        } catch (Exception e) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+
     }
 
     public void eliminar(JList jlist) {

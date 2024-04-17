@@ -2,7 +2,9 @@ Controlador\Controller$1.class
 Vista\Vista_Registrarse.class
 com\tfc\escritorio\tfc_escritorio\Modelo\Usuario.class
 Vista\Vista_Menu$1.class
+Vista\Vista_Ligas.class
 Vista\Vista_Menu$2.class
+Vista\Vista_Equipos_ligas.class
 Vista\Vista_Menu.class
 Vista\Vista_Menu$4.class
 Vista\LOGIN$1.class

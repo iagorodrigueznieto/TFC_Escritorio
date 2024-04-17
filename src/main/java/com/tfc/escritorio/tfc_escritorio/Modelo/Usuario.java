@@ -12,25 +12,25 @@ public class Usuario {
 
     private Integer idUsuario;
     private String login;
-    private String email;
+    private String correo;
     private String contraseña;
-    private Integer codRol; 
+    private Integer cod_Rol; 
     
     
 
     public Usuario(String login, String email, String contraseña, Integer codRol) {
         this.login = login;
-        this.email = email;
+        this.correo = email;
         this.contraseña = contraseña;
-        this.codRol=codRol;
+        this.cod_Rol=codRol;
     }
 
     public Integer getCodRol() {
-        return codRol;
+        return cod_Rol;
     }
 
     public void setCodRol(Integer codRol) {
-        this.codRol = codRol;
+        this.cod_Rol = codRol;
     }
     
    
@@ -52,11 +52,11 @@ public class Usuario {
     }
 
     public String getEmail() {
-        return email;
+        return correo;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.correo = email;
     }
 
     public String getContraseña() {
