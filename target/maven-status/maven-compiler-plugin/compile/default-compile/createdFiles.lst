@@ -6,9 +6,11 @@ Vista\Vista_Ligas.class
 Vista\Vista_Menu$2.class
 Vista\Vista_Equipos_ligas.class
 Vista\Vista_Menu.class
+Vista\Vista_Ligas$1.class
 Vista\Vista_Menu$4.class
 Vista\LOGIN$1.class
 Controlador\Controller.class
+Vista\Vista_Ligas$2.class
 com\tfc\escritorio\tfc_escritorio\Modelo\Rol.class
 com\tfc\escritorio\tfc_escritorio\Modelo\Jugador.class
 Vista\LOGIN$2.class

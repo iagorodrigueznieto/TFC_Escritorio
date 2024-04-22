@@ -105,26 +105,29 @@ public class Controller {
     public boolean login(String login, String password) {
 
         try {
+            
+            
             String endpoint = "http://localhost:8080/usuarios/login?login=" + URLEncoder.encode(login, "UTF-8") + "&password=" + URLEncoder.encode(password, "UTF-8");
             URL url = new URL(endpoint);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
             int responseCode = connection.getResponseCode();
+            
+            
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
+                StringBuilder response;
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    String inputLine;
+                    response = new StringBuilder();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
                 }
-                in.close();
+                
+                
                 System.out.println(response);
-
-                boolean loginResult = Boolean.parseBoolean(response.toString());
-                System.out.println(loginResult);
-                return loginResult;
+                
             }
         } catch (IOException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -170,6 +173,7 @@ public class Controller {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("DELETE");
             System.out.println(connection.getResponseCode());
+            
             connection.disconnect();
 
         } catch (UnsupportedEncodingException ex) {
