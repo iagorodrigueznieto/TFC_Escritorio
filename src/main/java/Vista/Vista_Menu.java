@@ -165,7 +165,6 @@ public class Vista_Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controller.eliminar(Lista);
-        JOptionPane.showMessageDialog(null, "Jugador Eliminador con éxito.");
         Lista.removeAll();
     }//GEN-LAST:event_jButton1ActionPerformed
 

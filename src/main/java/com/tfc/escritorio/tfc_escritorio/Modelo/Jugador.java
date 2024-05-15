@@ -18,79 +18,129 @@ public class Jugador implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer idJugador;
-
-    private String nombre;
-
-    private Date fechaNacimiento;
-
-    private Integer idEquipo;
-
-    private Integer tarjetasAmarillas;
-
-    private Integer tarjetasRojas;
-
-    private Integer partidosJugados;
-
-    private Integer goles;
-
-    private Integer asistencias;
-
-    private String imagen;
-
-    private Integer codPosicion;
+    public Integer getId_jugador() {
+        return id_jugador;
+    }
 
     @Override
     public String toString() {
-        return nombre;
+        return nombre ;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Integer getIdJugador() {
-        return idJugador;
+    public void setId_jugador(Integer id_jugador) {
+        this.id_jugador = id_jugador;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public Date getFechaNacimiento() {
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public Integer getIdEquipo() {
-        return idEquipo;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Integer getId_equipo() {
+        return id_equipo;
+    }
+
+    public void setId_equipo(Integer id_equipo) {
+        this.id_equipo = id_equipo;
     }
 
     public Integer getTarjetasAmarillas() {
         return tarjetasAmarillas;
     }
 
+    public void setTarjetasAmarillas(Integer tarjetasAmarillas) {
+        this.tarjetasAmarillas = tarjetasAmarillas;
+    }
+
     public Integer getTarjetasRojas() {
         return tarjetasRojas;
+    }
+
+    public void setTarjetasRojas(Integer tarjetasRojas) {
+        this.tarjetasRojas = tarjetasRojas;
     }
 
     public Integer getPartidosJugados() {
         return partidosJugados;
     }
 
+    public void setPartidosJugados(Integer partidosJugados) {
+        this.partidosJugados = partidosJugados;
+    }
+
     public Integer getGoles() {
         return goles;
+    }
+
+    public void setGoles(Integer goles) {
+        this.goles = goles;
     }
 
     public Integer getAsistencias() {
         return asistencias;
     }
 
+    public void setAsistencias(Integer asistencias) {
+        this.asistencias = asistencias;
+    }
+
     public String getImagen() {
         return imagen;
     }
 
-    public Integer getCodPosicion() {
-        return codPosicion;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
+    public Integer getCod_Posicion() {
+        return Cod_Posicion;
+    }
+
+    public void setCod_Posicion(Integer Cod_Posicion) {
+        this.Cod_Posicion = Cod_Posicion;
+    }
+    
+  
+    private Integer id_jugador;
+
+
+    private String nombre;
+
+ 
+    private String fechaNacimiento;
+
+ 
+    private Integer id_equipo;
+
+    
+    private Integer tarjetasAmarillas;
+
+
+    private Integer tarjetasRojas;
+
+
+    private Integer partidosJugados;
+
+
+    private Integer goles;
+
+    
+    private Integer asistencias;
+
+
+    private String imagen;
+
+  
+    private Integer Cod_Posicion;
 }

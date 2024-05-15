@@ -15,14 +15,16 @@ public class Usuario {
     private String correo;
     private String contraseña;
     private Integer cod_Rol; 
+    private String imagen;
     
     
 
-    public Usuario(String login, String email, String contraseña, Integer codRol) {
+    public Usuario(String login, String email, String contraseña, Integer codRol,String imagen) {
         this.login = login;
         this.correo = email;
         this.contraseña = contraseña;
         this.cod_Rol=codRol;
+        this.imagen= imagen;
     }
 
     public Integer getCodRol() {
