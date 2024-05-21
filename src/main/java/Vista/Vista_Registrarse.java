@@ -119,7 +119,7 @@ public class Vista_Registrarse extends javax.swing.JFrame {
         } else {
             controller.registrarse(txtNombreUsuario.getText(), txtCorreoElectronico.getText(), contraseña2);
             JOptionPane.showMessageDialog(null, "El Registro ha tenido éxito.");
-            controller.iniciarVentanaPrincipal();
+            dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

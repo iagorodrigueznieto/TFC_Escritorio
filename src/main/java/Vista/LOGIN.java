@@ -120,15 +120,17 @@ public class LOGIN extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         if (controller.login(txtLogin.getText(), txtContraseña.getText().toString())) {
+            dispose();
             JOptionPane.showMessageDialog(null, "Login Correcto entrando");
-            controller.iniciarVentanaPrincipal();
+        
         } else {
             JOptionPane.showMessageDialog(null, "Login Incorrecto, vuelve a intentarlo");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            controller.iniciarVentanaRegistrarse();
+        dispose();
+        controller.iniciarVentanaRegistrarse();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
