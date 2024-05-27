@@ -120,6 +120,7 @@ public class LOGIN extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         if (controller.login(txtLogin.getText(), txtContraseña.getText().toString())) {
+            controller.iniciarMenuPrincipal();
             dispose();
             JOptionPane.showMessageDialog(null, "Login Correcto entrando");
         

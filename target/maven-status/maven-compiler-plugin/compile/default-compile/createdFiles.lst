@@ -1,4 +1,6 @@
 Vista\Vista_Registrarse.class
+Controlador\Controller$7.class
+Vista\MenuPrincipal$6.class
 Controlador\Controller$4.class
 Vista\Vista_Crear_Liga$2$1.class
 Vista\Vista_Traspasos$1.class
@@ -14,9 +16,8 @@ Vista\Vista_Traspasos$4.class
 Controlador\Controller$1.class
 com\tfc\escritorio\tfc_escritorio\Modelo\Usuario.class
 Vista\Vista_Ligas.class
-Vista\MenuPrincipal$5$1.class
 Vista\Vista_Traspasos$5.class
-Vista\Vista_Ligas$5.class
+Controlador\Controller$8.class
 com\tfc\escritorio\tfc_escritorio\Modelo\Equipo.class
 Vista\MenuPrincipal$3.class
 Vista\Vista_Modificar_Liga.class
@@ -27,8 +28,8 @@ Vista\Vista_Modificar_Liga$1.class
 Vista\LOGIN$2.class
 Vista\Vista_Insertar_Equipo_Liga$4.class
 Vista\Vista_Ligas$4.class
-Vista\Vista_Ligas$5$1.class
 Vista\Vista_Traspasos$2.class
+Controlador\Controller$9.class
 Vista\Vista_Insertar_Equipo_Liga$5$1.class
 Vista\MenuPrincipal$1.class
 Vista\Vista_Ligas$1.class
@@ -51,4 +52,6 @@ Vista\Vista_Insertar_Equipo_Liga$3.class
 Vista\MenuPrincipal$5.class
 Controlador\Controller$3.class
 Vista\Vista_Modificar_Liga$3.class
+Controlador\Controller$6.class
+Vista\MenuPrincipal$6$1.class
 Vista\Vista_Ligas$3.class

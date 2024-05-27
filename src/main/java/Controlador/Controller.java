@@ -54,7 +54,7 @@ import javax.swing.JTextField;
 public class Controller {
     
     static Vista_Registrarse registrarse = new Vista_Registrarse();
-    static Vista_Insertar_Equipo_Liga gestionEquipoLiga = new Vista_Insertar_Equipo_Liga(null,true);
+    static Vista_Insertar_Equipo_Liga gestionEquipoLiga = new Vista_Insertar_Equipo_Liga(null, true);
     static LOGIN login = new LOGIN();
     static Vista_Crear_Liga crear = new Vista_Crear_Liga(null, true);
     static Vista_Ligas ligas = new Vista_Ligas(null, true);
@@ -64,6 +64,12 @@ public class Controller {
     static DefaultListModel<Equipo> modeloListaEquipo2 = new DefaultListModel<>();
     static DefaultListModel<Equipo> modeloListaEquipo = new DefaultListModel<>();
     static DefaultComboBoxModel<Liga> modeloComboLigas = new DefaultComboBoxModel<>();
+    
+    static DefaultComboBoxModel<Equipo> modelocomboEquipos1 = new DefaultComboBoxModel<>();
+    static DefaultComboBoxModel<Equipo> modelocomboEquipos2 = new DefaultComboBoxModel<>();
+    static DefaultListModel<Jugador> modeloListaJugadores1 = new DefaultListModel<>();
+    static DefaultListModel<Jugador> modeloListaJugadores2 = new DefaultListModel<>();
+    
     static DefaultListModel<Liga> modeloListaEquipoenLiga = new DefaultListModel<>();
     
     public Controller() {
@@ -74,10 +80,9 @@ public class Controller {
         gestionEquipoLiga.setVisible(true);
     }
     
-    public void iniciarVentanaTraspasos(){
+    public void iniciarVentanaTraspasos() {
         traspasos.setVisible(true);
     }
-    
     
     public void iniciarVentanaGestionLigas() {
         ligas.setVisible(true);
@@ -95,6 +100,10 @@ public class Controller {
     public void iniciarVentanaLogin() {
         login.setVisible(true);
         
+    }
+    
+    public void iniciarMenuPrincipal(){
+        menu.setVisible(true);
     }
     
     public void IniciarVentanaCrearLiga() {
@@ -504,20 +513,17 @@ public class Controller {
         }
     }
     
-    public void cargarJugadoresD1Equipo() {
-        
-    }
-    
     public void traspasar1Jugador(JList jlist, JComboBox combo) {
         try {
             Integer codEquipo = ((Equipo) combo.getSelectedItem()).getIdEquipo();
             Integer idJugador = ((Jugador) jlist.getSelectedValue()).getId_jugador();
             
-            String enlace = "http://192.168.2.211:8080/jugadores/traspaso?codJugador=" + URLEncoder.encode(Integer.toString(idJugador), "UTF-8") + "&codEquipo=" + URLEncoder.encode(Integer.toString(codEquipo), "UTF-8");
+            String enlace = "http://192.168.2.211:8080/jugadores/traspaso?codJugador=" + URLEncoder.encode(idJugador.toString(), "UTF-8") + "&codEquipo=" + URLEncoder.encode(codEquipo.toString(), "UTF-8");
             URL url = new URL(enlace);
             
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             
+            connection.setRequestMethod("PUT");
             if (connection.getResponseCode() == 200) {
                 JOptionPane.showMessageDialog(null, "Jugador traspasado con éxito");
             } else {
@@ -541,7 +547,6 @@ public class Controller {
             try {
                 Desktop.getDesktop().browse(new URI(pdfUrl));
             } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
             }
         }
         
@@ -571,4 +576,155 @@ public class Controller {
         }
     }
     
+    public void limpiarModeloLista() {
+        modeloListaJugadores1.clear();
+    }
+    
+    public void limpiarModeloLista2() {
+        modeloListaJugadores2.clear();
+    }
+    
+    public void mostrarJugadoresD1Equipo(JList lista, JComboBox combo) {
+        try {
+            Equipo equipo = (Equipo) combo.getSelectedItem();
+            String endPointUrl = "http://192.168.2.211:8080/jugadores/equipo?codEquipo=" + URLEncoder.encode(equipo.getIdEquipo().toString(), "UTF-8");
+            URL url = new URL(endPointUrl);
+            System.setOut(new PrintStream(System.out, true, "UTF-8"));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder builder = new StringBuilder();
+            String line;
+            
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+            }
+            
+            reader.close();
+            
+            connection.disconnect();
+            ObjectMapper mapper = new ObjectMapper();
+            
+            List<Jugador> dataList = mapper.readValue(builder.toString(), new TypeReference<List<Jugador>>() {
+            });
+            for (Jugador jugador : dataList) {
+                modeloListaJugadores1.addElement(jugador);
+            }
+            lista.setModel(modeloListaJugadores1);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+      public void mostrarJugadoresD1Equipo2(JList lista, JComboBox combo) {
+        try {
+            Equipo equipo = (Equipo) combo.getSelectedItem();
+            String endPointUrl = "http://192.168.2.211:8080/jugadores/equipo?codEquipo=" + URLEncoder.encode(equipo.getIdEquipo().toString(), "UTF-8");
+            URL url = new URL(endPointUrl);
+            System.setOut(new PrintStream(System.out, true, "UTF-8"));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder builder = new StringBuilder();
+            String line;
+            
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+            }
+            
+            reader.close();
+            
+            connection.disconnect();
+            ObjectMapper mapper = new ObjectMapper();
+            
+            List<Jugador> dataList = mapper.readValue(builder.toString(), new TypeReference<List<Jugador>>() {
+            });
+            for (Jugador jugador : dataList) {
+                modeloListaJugadores2.addElement(jugador);
+            }
+            lista.setModel(modeloListaJugadores2);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
+    
+    public void cargarComboEquipos1(JComboBox combo) {
+        try {
+            Equipo equipo = (Equipo) combo.getSelectedItem();
+            String endPointUrl = "http://192.168.2.211:8080/equipos";
+            URL url = new URL(endPointUrl);
+            System.setOut(new PrintStream(System.out, true, "UTF-8"));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder builder = new StringBuilder();
+            String line;
+            
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+            }
+            
+            reader.close();
+            
+            connection.disconnect();
+            ObjectMapper mapper = new ObjectMapper();
+            
+            List<Equipo> dataList = mapper.readValue(builder.toString(), new TypeReference<List<Equipo>>() {
+            });
+            for (Equipo equipo1 : dataList) {
+                modelocomboEquipos1.addElement(equipo1);
+            }
+            combo.setModel(modelocomboEquipos1);
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void cargarComboEquipos2(JComboBox combo) {
+        try {
+            Equipo equipo = (Equipo) combo.getSelectedItem();
+            String endPointUrl = "http://192.168.2.211:8080/equipos";
+            URL url = new URL(endPointUrl);
+            System.setOut(new PrintStream(System.out, true, "UTF-8"));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder builder = new StringBuilder();
+            String line;
+            
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+            }
+            
+            reader.close();
+            
+            connection.disconnect();
+            ObjectMapper mapper = new ObjectMapper();
+            
+            List<Equipo> dataList = mapper.readValue(builder.toString(), new TypeReference<List<Equipo>>() {
+            });
+            for (Equipo equipo1 : dataList) {
+                modelocomboEquipos2.addElement(equipo1);
+            }
+            combo.setModel(modelocomboEquipos2);
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

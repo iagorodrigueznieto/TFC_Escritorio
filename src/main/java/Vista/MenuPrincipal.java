@@ -54,6 +54,11 @@ public class MenuPrincipal extends javax.swing.JDialog {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Perfiles\\irnieto\\Documents\\NetBeansProjects\\TFC_Escritorio\\src\\main\\java\\res\\jugadores.png")); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon("D:\\Perfiles\\irnieto\\Documents\\NetBeansProjects\\TFC_Escritorio\\src\\main\\java\\res\\liga.png")); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,6 +171,9 @@ public class MenuPrincipal extends javax.swing.JDialog {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         controller.iniciarVentanaGestionLigas();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+controller.iniciarVentanaTraspasos();    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
